@@ -27,16 +27,6 @@ const uploadOnCloudinary = async (localFilePath) => {
   }
 
   try {
-    // Check whether local file exists
-    try {
-      await fs.access(localFilePath);
-    } catch {
-      console.error(
-        `Cloudinary upload failed: Local file does not exist: ${localFilePath}`,
-      );
-      return null;
-    }
-
     // Upload file to Cloudinary
     const response = await cloudinary.uploader.upload(localFilePath, {
       resource_type: "auto",
